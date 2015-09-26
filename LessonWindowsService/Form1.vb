@@ -72,7 +72,7 @@ Public Class Form1
                     lblStats.Text = "停止状態に移行中"
             End Select
         Catch ex As Exception
-            lblStats.Text = "サービス名エラー"
+            lblStats.Text = "サービス名エラーです"
         End Try
     End Sub
 
