@@ -26,7 +26,6 @@ Partial Class Form1
         Me.cboSelSvc = New System.Windows.Forms.ComboBox()
         Me.lblStats = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
@@ -53,14 +52,6 @@ Partial Class Form1
         '
         Me.Timer1.Interval = 3000
         '
-        'ComboBox1
-        '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(12, 79)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(569, 20)
-        Me.ComboBox1.TabIndex = 2
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -76,7 +67,6 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(593, 131)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.lblStats)
         Me.Controls.Add(Me.cboSelSvc)
         Me.Name = "Form1"
@@ -88,7 +78,6 @@ Partial Class Form1
     Friend WithEvents cboSelSvc As System.Windows.Forms.ComboBox
     Friend WithEvents lblStats As System.Windows.Forms.Label
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
 
 End Class
