@@ -13,6 +13,8 @@ Public Class Form1
         Dim Svcs() As ServiceProcess.ServiceController 'WindowsService取得用
         Svcs = ServiceProcess.ServiceController.GetServices '返値はServiceController型の配列です。
 
+        'サービスリストのリフレッシュの必要があるかもしれませんね。
+
         'ServiceController→String
         For Each Svc As ServiceProcess.ServiceController In Svcs '配列を1つずつ処理します。1つずつやるしかないようです。
             Clist.Add(Svc.DisplayName)
@@ -46,69 +48,26 @@ Public Class Form1
         ServiceStat.DisplayName = cboSelSvc.Text
 
         Try
-            'Label1.Text = ServiceStat.Status 'これだと数値が表示されますが
-            Label1.Text = ServiceStat.Status.ToString 'ToStringで意味のある文字列が表示されます。便利だね。
-
-        Catch ex As Exception
-            Label1.Text = "***"
-
-        End Try
-
-        Try
             Select Case ServiceStat.Status
                 Case ServiceProcess.ServiceControllerStatus.ContinuePending
-                    lblStats.Text = "再開中"
+                    lblStats.Text = "再開中(" + ServiceStat.Status.ToString + ")"
                 Case ServiceProcess.ServiceControllerStatus.Paused
-                    lblStats.Text = "一時停止中"
+                    lblStats.Text = "一時停止中(" + ServiceStat.Status.ToString + ")"
                 Case ServiceProcess.ServiceControllerStatus.PausePending
-                    lblStats.Text = "一時停止状態に移行中"
+                    lblStats.Text = "一時停止状態に移行中(" + ServiceStat.Status.ToString + ")"
                 Case ServiceProcess.ServiceControllerStatus.Running
-                    lblStats.Text = "動作中"
+                    lblStats.Text = "動作中(" + ServiceStat.Status.ToString + ")"
                 Case ServiceProcess.ServiceControllerStatus.StartPending
-                    lblStats.Text = "開始中"
+                    lblStats.Text = "開始中(" + ServiceStat.Status.ToString + ")"
                 Case ServiceProcess.ServiceControllerStatus.Stopped
-                    lblStats.Text = "停止中"
+                    lblStats.Text = "停止中(" + ServiceStat.Status.ToString + ")"
                 Case ServiceProcess.ServiceControllerStatus.StopPending
-                    lblStats.Text = "停止状態に移行中"
+                    lblStats.Text = "停止状態に移行中(" + ServiceStat.Status.ToString + ")"
             End Select
         Catch ex As Exception
             lblStats.Text = "サービス名エラーです"
         End Try
     End Sub
-
-    ''' <summary>
-    ''' Serviceの状態を返す
-    ''' </summary>
-    ''' <param name="Stext"></param>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
-    Private Function GetStatus2(Stext As String) As Integer
-
-        Dim ServiceStat As New ServiceProcess.ServiceController
-        ServiceStat.DisplayName = Stext
-
-        Try
-            Select Case ServiceStat.Status
-                Case ServiceProcess.ServiceControllerStatus.ContinuePending
-                    lblStats.Text = "再開中"
-                Case ServiceProcess.ServiceControllerStatus.Paused
-                    lblStats.Text = "一時停止中"
-                Case ServiceProcess.ServiceControllerStatus.PausePending
-                    lblStats.Text = "一時停止状態に移行中"
-                Case ServiceProcess.ServiceControllerStatus.Running
-                    lblStats.Text = "動作中"
-                Case ServiceProcess.ServiceControllerStatus.StartPending
-                    lblStats.Text = "開始中"
-                Case ServiceProcess.ServiceControllerStatus.Stopped
-                    lblStats.Text = "停止中"
-                Case ServiceProcess.ServiceControllerStatus.StopPending
-                    lblStats.Text = "停止状態に移行中"
-            End Select
-        Catch ex As Exception
-            lblStats.Text = "サービス名エラー"
-        End Try
-        GetStatus2 = 0
-    End Function
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         GetStatus()
@@ -116,5 +75,41 @@ Public Class Form1
 
     Private Sub cboSelSvc_SelectedValueChanged(sender As Object, e As EventArgs) Handles cboSelSvc.SelectedValueChanged
         GetStatus()
+    End Sub
+
+    Private Sub btnStop_Click(sender As Object, e As EventArgs) Handles btnStop.Click
+        Dim ServiceStat As New ServiceProcess.ServiceController
+
+        Try
+            ServiceStat.DisplayName = cboSelSvc.Text
+            ServiceStat.Stop()
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
+    Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
+        Dim ServiceStat As New ServiceProcess.ServiceController
+
+        Try
+            ServiceStat.DisplayName = cboSelSvc.Text
+            ServiceStat.Start()
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
+    Private Sub btnRestart_Click(sender As Object, e As EventArgs) Handles btnRestart.Click
+        Dim ServiceStat As New ServiceProcess.ServiceController
+
+        Try
+            ServiceStat.DisplayName = cboSelSvc.Text
+            ServiceStat.Continue()
+        Catch ex As Exception
+
+        End Try
+
     End Sub
 End Class
