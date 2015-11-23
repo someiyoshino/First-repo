@@ -84,7 +84,9 @@ Public Class Form1
             ServiceStat.DisplayName = cboSelSvc.Text
             ServiceStat.Stop()
         Catch ex As Exception
-
+            'MessageBox.Show(ex.Message)
+            'MessageBox.Show(ex.ToString())
+            'MessageBox.Show(ex.StackTrace)
         End Try
 
     End Sub
@@ -96,20 +98,10 @@ Public Class Form1
             ServiceStat.DisplayName = cboSelSvc.Text
             ServiceStat.Start()
         Catch ex As Exception
+            'MessageBox.Show(ex.Message)
 
         End Try
 
     End Sub
 
-    Private Sub btnRestart_Click(sender As Object, e As EventArgs) Handles btnRestart.Click
-        Dim ServiceStat As New ServiceProcess.ServiceController
-
-        Try
-            ServiceStat.DisplayName = cboSelSvc.Text
-            ServiceStat.Continue()
-        Catch ex As Exception
-
-        End Try
-
-    End Sub
 End Class

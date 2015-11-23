@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form1
     Inherits System.Windows.Forms.Form
 
     'フォームがコンポーネントの一覧をクリーンアップするために dispose をオーバーライドします。
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Form1
     'メモ: 以下のプロシージャは Windows フォーム デザイナーで必要です。
     'Windows フォーム デザイナーを使用して変更できます。  
     'コード エディターを使って変更しないでください。
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.cboSelSvc = New System.Windows.Forms.ComboBox()
@@ -28,7 +28,6 @@ Partial Class Form1
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.btnStop = New System.Windows.Forms.Button()
         Me.btnStart = New System.Windows.Forms.Button()
-        Me.btnRestart = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'cboSelSvc
@@ -38,7 +37,7 @@ Partial Class Form1
         Me.cboSelSvc.FormattingEnabled = True
         Me.cboSelSvc.Location = New System.Drawing.Point(12, 24)
         Me.cboSelSvc.Name = "cboSelSvc"
-        Me.cboSelSvc.Size = New System.Drawing.Size(570, 20)
+        Me.cboSelSvc.Size = New System.Drawing.Size(340, 20)
         Me.cboSelSvc.TabIndex = 0
         '
         'lblStats
@@ -52,7 +51,7 @@ Partial Class Form1
         '
         'Timer1
         '
-        Me.Timer1.Interval = 3000
+        Me.Timer1.Interval = 1000
         '
         'btnStop
         '
@@ -72,21 +71,11 @@ Partial Class Form1
         Me.btnStart.Text = "Start"
         Me.btnStart.UseVisualStyleBackColor = True
         '
-        'btnRestart
-        '
-        Me.btnRestart.Location = New System.Drawing.Point(174, 50)
-        Me.btnRestart.Name = "btnRestart"
-        Me.btnRestart.Size = New System.Drawing.Size(75, 23)
-        Me.btnRestart.TabIndex = 4
-        Me.btnRestart.Text = "Restart"
-        Me.btnRestart.UseVisualStyleBackColor = True
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(593, 131)
-        Me.Controls.Add(Me.btnRestart)
+        Me.ClientSize = New System.Drawing.Size(363, 106)
         Me.Controls.Add(Me.btnStart)
         Me.Controls.Add(Me.btnStop)
         Me.Controls.Add(Me.lblStats)
@@ -102,5 +91,4 @@ Partial Class Form1
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
     Friend WithEvents btnStop As Button
     Friend WithEvents btnStart As Button
-    Friend WithEvents btnRestart As Button
 End Class
